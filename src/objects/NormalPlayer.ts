@@ -60,7 +60,7 @@ export class NormalPlayer extends Phaser.Physics.Arcade.Sprite
             this.setVelocityX(this.speed);
             this.flipX = false;
         }
-        if (this.keys.jump.isDown)
+        if (this.keys.jump.isDown && this.body?.blocked.down)
         {
             this.setVelocityY(-this.jumpForce);
         }

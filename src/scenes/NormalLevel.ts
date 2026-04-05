@@ -4,6 +4,8 @@ import { NormalPlayer } from "../objects/NormalPlayer";
 export class NormalLevel extends Phaser.Scene
 {
     player!: NormalPlayer;
+
+    bottom!: number;
     preload()
     {
         this.load.spritesheet('player', "assets/images/player.png", {frameWidth: 32, frameHeight: 48});
@@ -53,10 +55,20 @@ export class NormalLevel extends Phaser.Scene
             this.player.setPosition(obj.x, obj.y);
             this.player.setOrigin(0, 1);
         })
+
+        this.bottom = map.heightInPixels;
     }
 
     update()
     {
         this.player.update();
+
+        if (this.player.y > this.bottom)
+        {
+            console.log("Player fell below the map");
+
+
+        }
+
     }
 }
