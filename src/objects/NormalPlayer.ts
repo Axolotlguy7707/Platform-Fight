@@ -53,10 +53,12 @@ export class NormalPlayer extends Phaser.Physics.Arcade.Sprite
         if (this.keys.left.isDown)
         {
             this.setVelocityX(-this.speed);
+            this.flipX = true;
         }
         if (this.keys.right.isDown)
         {
             this.setVelocityX(this.speed);
+            this.flipX = false;
         }
         if (this.keys.jump.isDown)
         {
