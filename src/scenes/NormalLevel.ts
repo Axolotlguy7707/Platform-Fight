@@ -32,6 +32,7 @@ export class NormalLevel extends Phaser.Scene
 
     LoadNormalLevel()
     {
+        // Create Tilemap
         const map = this.make.tilemap({ key: 'map'});
 
         const groundTileset: any = map.addTilesetImage('ground', 'groundTileset');
@@ -42,6 +43,16 @@ export class NormalLevel extends Phaser.Scene
         this.physics.add.collider(this.player, groundLayer);
 
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
+        // Spawn Player
+
+        const playerLayer: any = map.getObjectLayer('Player');
+
+        // @ts-ignore
+        playerLayer.objects.forEach(obj => {
+            this.player.setPosition(obj.x, obj.y);
+            this.player.setOrigin(0, 1);
+        })
     }
 
     update()
