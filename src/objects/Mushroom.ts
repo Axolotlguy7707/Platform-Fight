@@ -17,7 +17,9 @@ export class Mushroom extends Phaser.Physics.Arcade.Sprite
         this.body?.setSize(30, 32);
         this.body?.setOffset(22, 32);
 
+        // @ts-ignore
         this.body.checkCollision.left = true;
+        // @ts-ignore
         this.body.checkCollision.right = true;
 
 
@@ -31,14 +33,14 @@ export class Mushroom extends Phaser.Physics.Arcade.Sprite
     {
         this.setVelocityX(this.direction * this.speed);
 
-if (this.body?.blocked.left) {
-    this.direction = 1;
-    this.x += 2; // push away from wall
-}
-if (this.body?.blocked.right) {
-    this.direction = -1;
-    this.x -= 2;
-}
+        if (this.body?.blocked.left) {
+            this.direction = 1;
+            this.x += 2; // push away from wall
+        }
+        if (this.body?.blocked.right) {
+            this.direction = -1;
+            this.x -= 2;
+        }
 
 
 

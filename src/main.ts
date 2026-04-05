@@ -1,10 +1,11 @@
 import Phaser from "phaser";
 import { NormalLevel } from "./scenes/NormalLevel";
+import { CombatLevel } from "./scenes/CombatLevel";
 
 const config = {
     type: Phaser.AUTO,
     scale: {
-        mode: Phaser.Scale.ENVELOP,   // Same as Construct 3 "Scale Outer"
+        mode: Phaser.Scale.ENVELOP,
         autoCenter: Phaser.Scale.CENTER_BOTH,
         width: 640,
         height: 360,
@@ -19,7 +20,7 @@ const config = {
             debug: true
         }
     },
-    scene: [NormalLevel]
+    scene: [NormalLevel, CombatLevel]
 };
 
 // @ts-ignore

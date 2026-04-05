@@ -56,6 +56,7 @@ export class NormalLevel extends Phaser.Scene
 
         this.physics.add.collider(this.player, this.mushrooms, (player, mush) => {
             console.log("Player touched mushroom");
+            this.scene.start('CombatLevel');
         });
         
 
