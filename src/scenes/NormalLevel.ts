@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { NormalPlayer } from "../objects/NormalPlayer";
+import { Mushroom } from "../objects/Mushroom";
 
 // Import assets so Vite can fingerprint + bundle them
 // import playerPng from "../assets/images/player.png";
@@ -10,6 +11,8 @@ export class NormalLevel extends Phaser.Scene
 {
     player!: NormalPlayer;
     bottom!: number;
+
+    mushrooms!: Phaser.Physics.Arcade.Group;
 
     preload()
     {
@@ -42,9 +45,42 @@ export class NormalLevel extends Phaser.Scene
         this.player.initAnims();
         this.player.initKeys();
 
+        
+        this.cameras.main.startFollow(this.player);
+
+
+        this.mushrooms = this.physics.add.group({
+            classType: Mushroom,
+            runChildUpdate: true
+        });
+
+        this.physics.add.collider(this.player, this.mushrooms, (player, mush) => {
+            console.log("Player touched mushroom");
+        });
+        
+
+        // Create Mushroom Anims
+
+        this.anims.create({
+    key: 'mushroom-idle',
+    frames: this.anims.generateFrameNumbers('mushroom_idle', { start: 0, end: 6 }),
+    frameRate: 15,
+    repeat: -1
+});
+
+this.anims.create({
+    key: 'mushroom-walk',
+    frames: this.anims.generateFrameNumbers('mushroom_walk', { start: 0, end: 7 }),
+    frameRate: 24,
+    repeat: -1
+});
+
+
+
+
         this.LoadNormalLevel();
 
-        this.cameras.main.startFollow(this.player);
+
     }
 
     LoadNormalLevel()
@@ -79,6 +115,19 @@ export class NormalLevel extends Phaser.Scene
         });
 
         this.bottom = map.heightInPixels;
+
+        // Spawn Mushrooms
+
+        const mushLayer = map.getObjectLayer("Mushrooms");
+        if (mushLayer) {
+            mushLayer.objects.forEach(obj => {
+            const mush = new Mushroom(this, obj.x ?? 0, obj.y ?? 0);
+            this.mushrooms.add(mush);
+        });
+
+        this.physics.add.collider(this.mushrooms, groundLayer);
+}
+
     }
 
     update()
