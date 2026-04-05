@@ -3,8 +3,13 @@ import { NormalLevel } from "./scenes/NormalLevel";
 
 const config = {
     type: Phaser.AUTO,
-    width: 640,
-    height: 360,
+    scale: {
+        mode: Phaser.Scale.ENVELOP,   // Same as Construct 3 "Scale Outer"
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 640,
+        height: 360,
+        expandParent: true
+    },
     pixelArt: true,
     backgroundColor: '#00c3ff',
     physics: {
