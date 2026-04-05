@@ -24,6 +24,15 @@ export class NormalLevel extends Phaser.Scene
 
         // Tileset image
         this.load.image("groundTileset", "assets/images/tilesets/ground.png");
+
+        this.load.spritesheet("mushroom_idle", "assets/images/enemies/mushroom/Mushroom-Idle.png", {
+            frameWidth: 80,
+            frameHeight: 64
+        });
+        this.load.spritesheet("mushroom_walk", "assets/images/enemies/mushroom/Mushroom-Run.png", {
+            frameWidth: 80,
+            frameHeight: 64
+        });
     }
 
     create()
