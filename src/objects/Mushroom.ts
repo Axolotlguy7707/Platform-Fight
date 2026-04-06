@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 
+
+
 export class Mushroom extends Phaser.Physics.Arcade.Sprite
 {
     speed!: number;
@@ -44,5 +46,8 @@ export class Mushroom extends Phaser.Physics.Arcade.Sprite
 
 
 
+
     }
+
+
 }

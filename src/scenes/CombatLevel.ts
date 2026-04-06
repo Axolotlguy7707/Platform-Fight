@@ -1,12 +1,19 @@
 import Phaser from "phaser";
 
+import { moveTowardPoint } from "../systems/MoveTorwardPoint";
+import { randomize } from "../systems/Random";
+
 export class CombatLevel extends Phaser.Scene
 {
     mushroom!: Phaser.Physics.Arcade.Sprite;
 
+    mushroomSpeed!: number;
+
     constructor()
     {
         super({ key: 'CombatLevel' });
+
+        this.mushroomSpeed = 400;
     }
 
     preload()
@@ -31,9 +38,30 @@ export class CombatLevel extends Phaser.Scene
         // @ts-ignore
         this.mushroom.body?.setAllowGravity(false);
         this.mushroom.setGravity(0, 0);
+
+            this.time.addEvent({
+            delay: 1000,       // 1 second
+            callback: () => {
+            console.log("Loop tick");
+            this.randomPosition();
+        },
+            callbackScope: this,
+            loop: true
+        });
     }
 
     update(time: number, delta: number): void {
 
+    }
+
+    randomPosition()
+    {
+        let randomX: number;
+        let randomY: number;
+
+        randomX = randomize(1, 640);
+        randomY = randomize(1, 360);
+
+        moveTowardPoint(this.mushroom, randomX, randomY, this.mushroomSpeed);
     }
 }
