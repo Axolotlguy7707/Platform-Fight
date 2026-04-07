@@ -47,7 +47,7 @@ export class NormalLevel extends Phaser.Scene
             classType: Mushroom,
             runChildUpdate: true
         });
-
+        // @ts-ignore
         this.physics.add.collider(this.player, this.mushrooms, (player, mush: any) => {
             this.scene.pause('NormalLevel');
             this.scene.launch('CombatLevel', { enemyId: mush.id });
