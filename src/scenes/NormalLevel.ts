@@ -107,7 +107,8 @@ export class NormalLevel extends Phaser.Scene
         const mushLayer = map.getObjectLayer("Mushrooms");
 
         mushLayer?.objects.forEach(obj => {
-            const mush = new Mushroom(this, obj.x ?? 0, obj.y ?? 0);
+            // @ts-ignore
+            const mush = new Mushroom(this, obj.x ?? 0, obj.y ?? 0, groundLayer);
             this.mushrooms.add(mush);
         });
 
