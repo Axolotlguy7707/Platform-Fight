@@ -81,6 +81,9 @@ export class NormalLevel extends Phaser.Scene
         });
 
         this.LoadNormalLevel();
+
+
+        
     }
 
     LoadNormalLevel()
@@ -122,6 +125,16 @@ export class NormalLevel extends Phaser.Scene
         if (this.player.y > this.bottom)
         {
             console.log("Player fell below the map");
+            this.die();
         }
+    }
+
+    die()
+    {
+        // Show Game Over
+        const ui = document.getElementById("gameover-ui");
+        ui?.classList.remove("hidden");
+
+        this.scene.pause();
     }
 }

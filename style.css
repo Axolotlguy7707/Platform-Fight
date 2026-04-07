@@ -1,0 +1,59 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* removes scrollbars */
+    background: #000; /* optional, hides any gaps */
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#gameover-ui {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  pointer-events: auto;
+}
+
+#gameover-ui.hidden {
+  display: none;
+}
+
+.panel {
+  background: #222;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+}
+
+button {
+  background: #444;
+  color: white;
+  border: 2px solid #666;
+  padding: 12px 28px;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: background 0.1s, transform 0.1s;
+}
+
+button:hover {
+  background: #555;
+  transform: scale(1.05);
+}
+
+button:active {
+  background: #333;
+  transform: scale(0.97);
+}

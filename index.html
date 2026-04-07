@@ -5,27 +5,22 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>platform-fight</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="app"></div>
+
+    <!--Game Over-->
+    <div id="gameover-ui" class="hidden">
+      <div class="panel">
+        <h1>Game Over</h1>
+        <button id="retry-btn">Retry</button>
+        <p></p>
+        <button id="menu-btn">Main Menu</button>
+      </div>
+    </div>
+
+    <div id="game"></div>
     <script type="module" src="/src/main.ts"></script>
-
-    <style>
-      html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* removes scrollbars */
-    background: #000; /* optional, hides any gaps */
-}
-
-canvas {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-    </style>
+    <script type="module" src="/src/UI.ts"></script>
   </body>
 </html>

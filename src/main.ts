@@ -4,6 +4,7 @@ import { CombatLevel } from "./scenes/CombatLevel";
 
 const config = {
     type: Phaser.AUTO,
+    parent: 'game',
     scale: {
         mode: Phaser.Scale.ENVELOP,
         autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -24,4 +25,4 @@ const config = {
 };
 
 // @ts-ignore
-new Phaser.Game(config);
+export let game = new Phaser.Game(config);
