@@ -55,7 +55,7 @@ export class Mushroom extends Phaser.Physics.Arcade.Sprite
             } else if (this.direction === 1) {
                 this.flipX = true;  // facing right
             }
-}
+        }
 
 
     }
