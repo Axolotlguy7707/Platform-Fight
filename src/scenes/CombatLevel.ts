@@ -58,7 +58,7 @@ export class CombatLevel extends Phaser.Scene
         });
 
             // Dark overlay behind combat
-        this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0x000000, 0.5)
+            this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0x000000, 0.5)
             .setOrigin(0, 0)
             .setDepth(-1);
 
