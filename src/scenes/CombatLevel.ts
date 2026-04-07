@@ -9,11 +9,15 @@ export class CombatLevel extends Phaser.Scene
 
     mushroomSpeed!: number;
 
+    mushroomHealth!: number;
+
     constructor()
     {
         super({ key: 'CombatLevel' });
 
         this.mushroomSpeed = 400;
+
+        
     }
 
     preload()
@@ -48,10 +52,20 @@ export class CombatLevel extends Phaser.Scene
             callbackScope: this,
             loop: true
         });
+
+        this.mushroom.setInteractive();
+
+        this.mushroom.on("pointerdown", () => {
+            console.log("Sprite was clicked!");
+            this.mushroomHealth += -randomize(5, 10);
+        });
     }
 
     update(time: number, delta: number): void {
-
+        if (this.mushroomHealth <= 0)
+        {
+            
+        }
     }
 
     randomPosition()

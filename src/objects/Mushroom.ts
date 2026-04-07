@@ -7,6 +7,8 @@ export class Mushroom extends Phaser.Physics.Arcade.Sprite
     speed!: number;
 
     direction!: number;
+
+    id!: any;
     constructor(scene: Phaser.Scene, x: number, y: number)
     {
         super(scene, x, y, 'mushroom_idle', 0);
@@ -29,6 +31,8 @@ export class Mushroom extends Phaser.Physics.Arcade.Sprite
         this.play('mushroom-walk');
 
         this.direction = -1;
+
+        this.id = Phaser.Math.RND.uuid();
     }
 
     update()
