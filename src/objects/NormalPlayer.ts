@@ -16,7 +16,7 @@ export class NormalPlayer extends Phaser.Physics.Arcade.Sprite
         scene.physics.add.existing(this);
 
         this.body?.setSize(12, 42);
-        this.body?.setOffset(11, 5);
+        this.body?.setOffset(11, 6);
     }
 
     initAnims()
