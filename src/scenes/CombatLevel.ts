@@ -1,23 +1,24 @@
 import Phaser from "phaser";
-
 import { moveTowardPoint } from "../systems/MoveTorwardPoint";
 import { randomize } from "../systems/Random";
 
 export class CombatLevel extends Phaser.Scene
 {
     mushroom!: Phaser.Physics.Arcade.Sprite;
+    mushroomSpeed = 400;
+    mushroomHealth = 30;
 
-    mushroomSpeed!: number;
-
-    mushroomHealth!: number;
+    enemyId!: string;
 
     constructor()
     {
         super({ key: 'CombatLevel' });
+    }
 
-        this.mushroomSpeed = 400;
-
-        
+    init(data: { enemyId: string })
+    {
+        this.enemyId = data.enemyId;
+        this.mushroomHealth = 30;
     }
 
     preload()
@@ -37,44 +38,42 @@ export class CombatLevel extends Phaser.Scene
             repeat: -1
         });
 
-        this.mushroom = this.physics.add.sprite(0, 0, 'mushroom_walk', 0);
+        this.mushroom = this.physics.add.sprite(320, 180, 'mushroom_walk', 0);
         this.mushroom.play('mushroom-walk');
         // @ts-ignore
-        this.mushroom.body?.setAllowGravity(false);
-        this.mushroom.setGravity(0, 0);
+        this.mushroom.body.setAllowGravity(false);
 
-            this.time.addEvent({
-            delay: 1000,       // 1 second
-            callback: () => {
-            console.log("Loop tick");
-            this.randomPosition();
-        },
-            callbackScope: this,
+        this.randomPosition();
+
+        this.time.addEvent({
+            delay: 1000,
+            callback: () => this.randomPosition(),
             loop: true
         });
 
         this.mushroom.setInteractive();
 
         this.mushroom.on("pointerdown", () => {
-            console.log("Sprite was clicked!");
-            this.mushroomHealth += -randomize(5, 10);
+            this.mushroomHealth -= randomize(5, 10);
         });
     }
 
-    update(time: number, delta: number): void {
+    update()
+    {
         if (this.mushroomHealth <= 0)
         {
-            
+            this.scene.stop('CombatLevel');
+            this.scene.resume('NormalLevel', {
+                enemyId: this.enemyId,
+                defeated: true
+            });
         }
     }
 
     randomPosition()
     {
-        let randomX: number;
-        let randomY: number;
-
-        randomX = randomize(1, 640);
-        randomY = randomize(1, 360);
+        const randomX = randomize(1, 640);
+        const randomY = randomize(1, 360);
 
         moveTowardPoint(this.mushroom, randomX, randomY, this.mushroomSpeed);
     }
