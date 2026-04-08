@@ -9,6 +9,9 @@ export class NormalLevel extends Phaser.Scene
 
     mushrooms!: Phaser.Physics.Arcade.Group;
 
+
+    bgm!: Phaser.Sound.BaseSound;
+
     constructor()
     {
         super({ key: 'NormalLevel'});
@@ -49,6 +52,7 @@ export class NormalLevel extends Phaser.Scene
             classType: Mushroom,
             runChildUpdate: true
         });
+
         // @ts-ignore
         this.physics.add.collider(this.player, this.mushrooms, (player, mush: any) => {
             this.scene.pause('NormalLevel');
@@ -84,17 +88,16 @@ export class NormalLevel extends Phaser.Scene
 
         this.LoadNormalLevel();
 
-
+        // 🎵 Updated: store BGM so we can stop it later
         if (this.cache.audio.has('bgm')) {
-            const bgm = this.sound.add("bgm", {
+            this.bgm = this.sound.add("bgm", {
                 loop: true,
                 volume: 0.5
             });
-            bgm.play();
+            this.bgm.play();
         } else {
             console.log('BGM not loaded');
         }
-
     }
 
     LoadNormalLevel()
@@ -142,7 +145,11 @@ export class NormalLevel extends Phaser.Scene
 
     die()
     {
-        // Show Game Over
+        if (this.bgm) {
+            this.bgm.stop();
+        }
+
+        // Show Game Over UI
         const ui = document.getElementById("gameover-ui");
         ui?.classList.remove("hidden");
 

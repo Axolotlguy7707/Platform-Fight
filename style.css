@@ -19,7 +19,7 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.863);
   pointer-events: auto;
 }
 
@@ -27,7 +27,7 @@ h1 {
   pointer-events: none;
 }
 
-#mainmenu-ui {
+#mainmenu-ui, #howToPlay-ui {
   display: flex;
   flex-direction: column;
   justify-content: center;

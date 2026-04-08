@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   // Ensure assets are processed
-  assetsInclude: ['**/*.png', '**/*.json', '**/*.mp3'],
+  assetsInclude: ['**/*.png', '**/*.json', '**/*.mp3', '**/*.wav'],
   build: {
     rollupOptions: {
       input: {

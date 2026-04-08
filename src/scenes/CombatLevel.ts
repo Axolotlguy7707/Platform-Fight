@@ -62,6 +62,22 @@ export class CombatLevel extends Phaser.Scene
             .setOrigin(0, 0)
             .setDepth(-1);
 
+        // Timer
+        this.time.delayedCall(8000, () => {
+            console.log("Time's UP!!!");
+            this.die();
+        });
+
+
+    }
+
+    die()
+    {
+        // Show Game Over
+        const ui = document.getElementById("gameover-ui");
+        ui?.classList.remove("hidden");
+
+        this.scene.stop('CombatLevel');
     }
 
     update()

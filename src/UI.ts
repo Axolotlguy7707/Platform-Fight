@@ -15,6 +15,7 @@ mainMenuButton?.addEventListener('click', ExitToMenu);
 
 function Retry()
 {
+    game.scene.stop('CombatLevel');
     game.scene.start('NormalLevel');
     gameOverUI?.classList.add("hidden");
 }
