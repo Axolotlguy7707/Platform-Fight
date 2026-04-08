@@ -39,6 +39,7 @@ h1 {
 #mainmenu-ui h1 {
   font-size: clamp(2rem, 10vw, 8rem);
   margin: 0;
+  font-family: 'Arial', sans-serif;
 }
 
 
