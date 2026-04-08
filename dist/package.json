@@ -1,0 +1,12 @@
+{
+  "name": "platform-fight",
+  "main": "index.html",
+  "window": {
+    "title": "Platform Fight",
+    "width": 1280,
+    "height": 720,
+    "resizable": true,
+    "fullscreen": false,
+    "frame": true
+  }
+}
