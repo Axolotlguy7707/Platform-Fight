@@ -33,11 +33,12 @@ h1 {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  gap: 50px;
+  gap: 5vh;
 }
 
 #mainmenu-ui h1 {
-  font-size: 200px;
+  font-size: clamp(2rem, 10vw, 8rem);
+  margin: 0;
 }
 
 
@@ -59,8 +60,8 @@ button {
   background: #444;
   color: white;
   border: 2px solid #666;
-  padding: 12px 28px;
-  font-size: 20px;
+  padding: 1vh 3vw;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   border-radius: 8px;
   cursor: pointer;
   font-family: sans-serif;
