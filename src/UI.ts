@@ -10,10 +10,16 @@ const gameOverUI = document.getElementById('gameover-ui');
 
 
 RetryButton?.addEventListener('click', Retry);
+mainMenuButton?.addEventListener('click', ExitToMenu);
 
 
 function Retry()
 {
     game.scene.start('NormalLevel');
     gameOverUI?.classList.add("hidden");
+}
+
+function ExitToMenu()
+{
+    window.location.href = 'index.html';
 }

@@ -33,6 +33,8 @@ export class NormalLevel extends Phaser.Scene
             frameWidth: 80,
             frameHeight: 64
         });
+
+        this.load.audio("bgm", "assets/audio/music/Shakedown.mp3");
     }
 
     create()
@@ -83,7 +85,16 @@ export class NormalLevel extends Phaser.Scene
         this.LoadNormalLevel();
 
 
-        
+        if (this.cache.audio.has('bgm')) {
+            const bgm = this.sound.add("bgm", {
+                loop: true,
+                volume: 0.5
+            });
+            bgm.play();
+        } else {
+            console.log('BGM not loaded');
+        }
+
     }
 
     LoadNormalLevel()

@@ -1,31 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>platform-fight</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Fight</title>
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-
-    <!--Game Over-->
-    <div id="gameover-ui" class="hidden">
-      <div class="panel">
-        <h1>Game Over</h1>
-        <button id="retry-btn">Retry</button>
-        <p></p>
-        <button id="menu-btn">Main Menu</button>
-      </div>
-    </div>
-
-    <div id="mainmenu-ui" class="hidden">
+</head>
+<body>
+    <div id="mainmenu-ui">
       <h1>Platform Fight</h1>
-      <button id="play-btn">Play</button>
+      <a href="game.html">
+        <button id="play-btn">Play</button>
+      </a>
     </div>
 
-    <div id="game"></div>
-    <script type="module" src="/src/main.ts"></script>
-    <script type="module" src="/src/UI.ts"></script>
-  </body>
+    <style>
+        body {
+            background-color: #00c3ff;
+        }
+    </style>
+
+</body>
 </html>

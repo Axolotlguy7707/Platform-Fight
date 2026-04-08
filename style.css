@@ -23,17 +23,26 @@ canvas {
   pointer-events: auto;
 }
 
-#mainmenu-ui {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0,0,0,0.6);
-  pointer-events: auto;
+h1 {
+  pointer-events: none;
 }
 
-#gameover-ui.hidden, #mainmenu-ui.hidden {
+#mainmenu-ui {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 50px;
+}
+
+#mainmenu-ui h1 {
+  font-size: 200px;
+}
+
+
+
+#gameover-ui.hidden {
   display: none;
 }
 
