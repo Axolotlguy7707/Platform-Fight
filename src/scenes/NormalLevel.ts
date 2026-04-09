@@ -6,6 +6,7 @@ export class NormalLevel extends Phaser.Scene
 {
     player!: NormalPlayer;
     bottom!: number;
+    end!: number;
 
     mushrooms!: Phaser.Physics.Arcade.Group;
 
@@ -120,6 +121,7 @@ export class NormalLevel extends Phaser.Scene
         });
 
         this.bottom = map.heightInPixels;
+        this.end = map.widthInPixels;
 
         const mushLayer = map.getObjectLayer("Mushrooms");
 
@@ -140,6 +142,13 @@ export class NormalLevel extends Phaser.Scene
         {
             console.log("Player fell below the map");
             this.die();
+        }
+
+        if (this.player.x > this.end)
+        {
+            console.log("Level Beaten!");
+            this.scene.pause('NormalLevel');
+            window.location.href = 'win.html';
         }
     }
 
