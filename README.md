@@ -4,7 +4,7 @@ Made for [Bigfrys Dev Jam](https://itch.io/jam/bigfrys-dev-jam)
 Mixes Platformer and Clicker games
 
 ## Credits
-Framework - [Phaser 3](https://phaser.io/)
+Framework - [Phaser 4](https://phaser.io/phaser4)
 
 UI - Vanilla HTML and CSS
 
