@@ -9,3 +9,4 @@ UI - Vanilla HTML and CSS
 Mushroom Sprites - [Forest Monsters](https://monopixelart.itch.io/forest-monsters-pixel-art)
 Level Design - [Tiled](https://www.mapeditor.org/)
 Sprite Design - [Aseprite](https://www.aseprite.org/)
+Desktop App Packaging - [NW.JS](https://nwjs.io/)

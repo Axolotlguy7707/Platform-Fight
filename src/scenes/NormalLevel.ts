@@ -89,13 +89,24 @@ export class NormalLevel extends Phaser.Scene
 
         this.LoadNormalLevel();
 
-        // 🎵 Updated: store BGM so we can stop it later
+        // Initialize BGM but don't play it yet due to autoplay restrictions
         if (this.cache.audio.has('bgm')) {
             this.bgm = this.sound.add("bgm", {
                 loop: true,
                 volume: 0.5
             });
-            this.bgm.play();
+            // Try to play, but catch any autoplay errors
+            try {
+                this.bgm.play();
+            } catch (error) {
+                console.log('BGM autoplay blocked, will play on user interaction');
+                // Add a one-time input listener to start BGM
+                this.input.once('pointerdown', () => {
+                    if (this.bgm && !this.bgm.isPlaying) {
+                        this.bgm.play();
+                    }
+                });
+            }
         } else {
             console.log('BGM not loaded');
         }

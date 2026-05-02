@@ -15,12 +15,15 @@ mainMenuButton?.addEventListener('click', ExitToMenu);
 
 function Retry()
 {
+    // Stop all scenes and restart from NormalLevel
     game.scene.stop('CombatLevel');
+    game.scene.stop('NormalLevel');
     game.scene.start('NormalLevel');
     gameOverUI?.classList.add("hidden");
 }
 
 function ExitToMenu()
 {
-    window.location.href = 'index.html';
+    // Use relative path for navigation
+    window.location.href = './index.html';
 }

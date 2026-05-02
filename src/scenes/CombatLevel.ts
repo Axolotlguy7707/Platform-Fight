@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { moveTowardPoint } from "../systems/MoveTorwardPoint";
 import { randomize } from "../systems/Random";
+import { NormalLevel } from "./NormalLevel";
 
 export class CombatLevel extends Phaser.Scene
 {
@@ -73,11 +74,16 @@ export class CombatLevel extends Phaser.Scene
 
     die()
     {
-        // Show Game Over
+        const normalLevel = this.scene.get('NormalLevel') as NormalLevel;
+        if (normalLevel && normalLevel.bgm) {
+            normalLevel.bgm.stop();
+        }
+
+        // Show Game Over UI
         const ui = document.getElementById("gameover-ui");
         ui?.classList.remove("hidden");
 
-        this.scene.stop('CombatLevel');
+        this.scene.pause();
     }
 
     update()
@@ -90,6 +96,14 @@ export class CombatLevel extends Phaser.Scene
                 defeated: true
             });
         }
+        // @ts-ignore
+        const vx = this.mushroom.body.velocity.x;
+
+        if (vx > 0) this.mushroom.setFlipX(true);
+        else if (vx < 0) this.mushroom.setFlipX(false);
+
+
+
     }
 
     randomPosition()
