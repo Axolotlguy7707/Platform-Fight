@@ -1,0 +1,10 @@
+{
+  "name": "platform-fight",
+  "version": "1.2.0",
+  "main": "index.html",
+  "window": {
+    "title": "Platform Fight",
+    "width": 1280,
+    "height": 720
+  }
+}
